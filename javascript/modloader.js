@@ -1,6 +1,6 @@
 import { satisfies } from "./slugver/satisfies.js";
 import { SlugverRange } from "./slugver/range.js";
-import { Slugcat } from "./creature.js";
+import { Slugcat, registerCharacter } from "./creature.js";
 import { evaluate } from "./globals/evaluator.js";
 import { CORE, VERSION, getId } from "./globals/core.js";
 import { world } from "./map.js";
@@ -156,8 +156,7 @@ getId("fileloader").onclick = async function () {
     }
 };
 export let registerCharactersHook = new EmptyHookable(() => {
-    alert(world.outskirts.items);
-    new Slugcat(0, 0, world.outskirts, "Nova");
+    registerCharacter(new Slugcat(0, 0, world.outskirts, "Nova"));
 });
 // call this immediately
 registerCharactersHook.call();

@@ -145,8 +145,7 @@ getId("fileloader").onclick = async function() {
 };
 
 export let registerCharactersHook = new EmptyHookable(() => {
-  alert(world.outskirts.items);
-  new Slugcat(0, 0, world.outskirts, "Nova");
+  registerCharacter(new Slugcat(0, 0, world.outskirts, "Nova"));
 });
 // call this immediately
 registerCharactersHook.call();

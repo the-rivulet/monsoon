@@ -53,7 +53,7 @@ export class Team {
     id;
     name;
     active;
-    teammates;
+    teammates = [];
     activate() {
         for (let i of Team.teamList) {
             i.active = false;
@@ -71,6 +71,9 @@ export class Team {
             if (j instanceof AICreature) {
                 j.takeTurn();
             }
+            // if they were all ai, then continue
+            if (!this.teammates.some(x => !(x instanceof AICreature)))
+                this.end();
         }
     }
     constructor(name, id, active = false) {
@@ -363,6 +366,8 @@ export class Dropwig extends AICreature {
     }
     takeTurn() {
         let target = this.pos.region.creatures.find(x => x.team != this.team && this.pos.near(x.pos));
+        if (target)
+            this.abilities[0].activate(target.pos);
     }
 }
 /** A character-like creature with adaptations, rites, etc. */

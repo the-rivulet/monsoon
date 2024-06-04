@@ -62,7 +62,7 @@ export class Team {
   id: string;
   name: string;
   active: boolean;
-  teammates: Creature[];
+  teammates: Creature[] = [];
   activate() {
     for(let i of Team.teamList) {
       i.active = false;
@@ -80,6 +80,8 @@ export class Team {
       if(j instanceof AICreature) {
         j.takeTurn();
       }
+      // if they were all ai, then continue
+      if(!this.teammates.some(x => !(x instanceof AICreature))) this.end();
     }
   }
   constructor(name: string, id: string, active = false) {
@@ -345,12 +347,13 @@ export class Dropwig extends AICreature {
   latching onto the ceiling above for a surprise attack.`;
   skills = new Skillset(2, 0, 0, 3, 0, 2, 1, 0, 0);
   getSpeed = () => 10;
-  abilities = [new UnarmedAttackAbility(this, 2, 4, false)];
+  abilities: Ability[] = [new UnarmedAttackAbility(this, 2, 4, false)];
   render(x: number, y: number, tileSize: number) {
     ctx.drawImage(getId<HTMLImageElement>(this.id), x, y, tileSize, tileSize);
   }
   takeTurn() {
     let target = this.pos.region.creatures.find(x => x.team != this.team && this.pos.near(x.pos));
+    if(target) this.abilities[0].activate(target.pos);
   }
 }
 
