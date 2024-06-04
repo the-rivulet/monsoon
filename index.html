@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>rivulet's mod loader :3</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="tip" id="floater"></div>
+    <div id="mainmenu" class="menu">
+      <h2>rivulet's mod loader :3</h2>
+      <button id="main>start">new run</button><br/>
+      <button id="main>mods">mods</button><br/>
+      <button id="testbutton">test button :D</button>
+    </div>
+    <div id="startmenu" class="menu twocolumn" style="top: -100%;">
+      <div id="startheader" class="header">
+        <button id="start>main">&lt;</button> <h2 style="display:inline">new run</h2><br/>
+      </div>
+      <div class="left">
+        select a character
+        <div id="charselector" class="left"></div>
+      </div>
+      <div id="chardetails" class="right"></div>
+    </div>
+    <div id="game" style="display:none">
+      <canvas id="canvas"></canvas>
+      <div id="log"></div>
+    </div>
+    <div id="modsmenu" class="menu twocolumn" style="top: -100%;">
+      <div id="modheader" class="header">
+        <button id="mods>main">&lt;</button> <h2 style="display:inline">manage mods</h2><br/>
+      </div>
+      <div id="load" class="left">
+        <button id="fileloader" class="tool">
+          upload mods
+          <div class="tip">warning: only upload files that you trust</div>
+        </button><br/>
+        <br/>
+        <span>loaded mods:</span> <button id="clearmods">clear</button><br/>
+        <p id="loadedmods"></p>
+        <button id="applymods">apply</button>
+      </div>
+      <div id="apply" class="right">
+        <span>applied mods:</span><br/>
+        <p id="appliedmods"></p>
+      </div>
+    </div>
+    <img style="display:none" id="rivu.core.slugcat" src="./assets/slughead.png">
+    <img style="display:none" id="rivu.core.dropwig" src="./assets/Dropwig_icon.png">
+    <script type="module" src="javascript/main.js"></script>
+  </body>
+</html>
